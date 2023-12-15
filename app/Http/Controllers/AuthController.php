@@ -44,7 +44,7 @@ class AuthController extends Controller
             $message->to($data['email'])->subject('Verification adresse mail');
         });
 
-        return response()->json(['message' => 'Veuillez vérifier votre adresse e-mail pour confirmer votre compte !'], 201);
+        return response()->json(['message' => 'Veuillez vérifier votre adresse e-mail pour confirmer votre compte ! token =>' . $user->email_verification_token], 201);
     }
 
     public function verifyEmail($token)
