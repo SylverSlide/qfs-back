@@ -19,8 +19,7 @@ Route::middleware('auth.token')->get('/me', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(AuthController::class)->group(function ($router) {
-    Route::post('login', 'login')->name('login');
-    Route::post('logout', 'logout')->name('logout')->middleware('auth.token');
-    Route::post('refresh', 'refresh')->name('refresh');
-});
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/email/verify/{token}', [AuthController::class, 'verifyEmail']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
