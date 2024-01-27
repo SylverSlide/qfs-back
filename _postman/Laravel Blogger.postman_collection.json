@@ -1,718 +1,645 @@
 {
-	"info": {
-		"_postman_id": "fb7a2443-bf00-4e06-a3fd-412971eee749",
-		"name": "Laravel Blogger",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2035630"
-	},
-	"item": [
-		{
-			"name": "Auth",
-			"item": [
-				{
-					"name": "Login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"// ",
-									"pm.environment.set(\"access_token\", jsonData.access_token);",
-									"pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "ankurk91@example.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "password@123",
-									"type": "text"
-								},
-								{
-									"key": "device_name",
-									"value": "vue spa",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Forgot password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "ankurk91@example.com",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/password/email",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"password",
-								"email"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reset password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "ankurk91@example.com",
-									"type": "text"
-								},
-								{
-									"key": "token",
-									"value": "secret",
-									"description": "token string got from email link",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "password@123",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "password@123",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/password/reset",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"password",
-								"reset"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Register",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "email",
-									"value": "random1@example.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "password@123",
-									"type": "text"
-								},
-								{
-									"key": "name",
-									"value": "elon",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/register",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"register"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.environment.set(\"access_token\", null);",
-									"pm.collectionVariables.set(\"access_token\", null);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/logout",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"logout"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Post",
-			"item": [
-				{
-					"name": "Create Post",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "post title",
-									"type": "text"
-								},
-								{
-									"key": "body",
-									"value": "very long string",
-									"type": "text"
-								},
-								{
-									"key": "publish",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "featured_image",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "categories",
-									"value": "",
-									"description": "array",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/posts",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"posts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Post",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "post title updated",
-									"type": "text"
-								},
-								{
-									"key": "body",
-									"value": "very long string updated",
-									"type": "text"
-								},
-								{
-									"key": "publish",
-									"value": "1",
-									"type": "text"
-								},
-								{
-									"key": "featured_image",
-									"type": "file",
-									"src": []
-								},
-								{
-									"key": "_method",
-									"value": "put",
-									"type": "text"
-								},
-								{
-									"key": "categories",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/posts/2",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "My Posts",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/posts?search&sort_order=desc",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"posts"
-							],
-							"query": [
-								{
-									"key": "search",
-									"value": null
-								},
-								{
-									"key": "sort_order",
-									"value": "desc"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Post",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": []
-						},
-						"url": {
-							"raw": "{{url}}/api/posts/1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Account",
-			"item": [
-				{
-					"name": "Me",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/me",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"me"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Profile",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Updated name",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/profile",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update password",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "current_password",
-									"value": "password@123",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "password",
-									"type": "text"
-								},
-								{
-									"key": "password_confirmation",
-									"value": "password",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/api/password",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"password"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Explore Posts",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{url}}/api/explore?search",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"api",
-						"explore"
-					],
-					"query": [
-						{
-							"key": "search",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"auth": {
-		"type": "bearer",
-		"bearer": [
-			{
-				"key": "token",
-				"value": "{{access_token}}",
-				"type": "string"
-			}
-		]
-	},
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "url",
-			"value": "http://laravel-blogger.test"
-		},
-		{
-			"key": "access_token",
-			"value": ""
-		}
-	]
+    "info": {
+        "_postman_id": "fb7a2443-bf00-4e06-a3fd-412971eee749",
+        "name": "Laravel Blogger",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "2035630"
+    },
+    "item": [{
+            "name": "Auth",
+            "item": [{
+                    "name": "Login",
+                    "event": [{
+                        "listen": "test",
+                        "script": {
+                            "exec": [
+                                "var jsonData = JSON.parse(responseBody);",
+                                "// ",
+                                "pm.environment.set(\"access_token\", jsonData.access_token);",
+                                "pm.collectionVariables.set(\"access_token\", jsonData.access_token);"
+                            ],
+                            "type": "text/javascript"
+                        }
+                    }],
+                    "request": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "email",
+                                    "value": "ankurk91@example.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password@123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "device_name",
+                                    "value": "vue spa",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/login",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Forgot password",
+                    "event": [{
+                        "listen": "test",
+                        "script": {
+                            "exec": [
+                                ""
+                            ],
+                            "type": "text/javascript"
+                        }
+                    }],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                "key": "email",
+                                "value": "ankurk91@example.com",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/password/email",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "password",
+                                "email"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Reset password",
+                    "event": [{
+                        "listen": "test",
+                        "script": {
+                            "exec": [
+                                ""
+                            ],
+                            "type": "text/javascript"
+                        }
+                    }],
+                    "request": {
+                        "auth": {
+                            "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "email",
+                                    "value": "ankurk91@example.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "token",
+                                    "value": "secret",
+                                    "description": "token string got from email link",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password@123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password_confirmation",
+                                    "value": "password@123",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/password/reset",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "password",
+                                "reset"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Register",
+                    "event": [{
+                        "listen": "test",
+                        "script": {
+                            "exec": [
+                                ""
+                            ],
+                            "type": "text/javascript"
+                        }
+                    }],
+                    "request": {
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "email",
+                                    "value": "random1@example.com",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password@123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "name",
+                                    "value": "elon",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/register",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "event": [{
+                        "listen": "test",
+                        "script": {
+                            "exec": [
+                                "pm.environment.set(\"access_token\", null);",
+                                "pm.collectionVariables.set(\"access_token\", null);"
+                            ],
+                            "type": "text/javascript"
+                        }
+                    }],
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{url}}/api/logout",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "logout"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Post",
+            "item": [{
+                    "name": "Create Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                    "key": "title",
+                                    "value": "post title",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "body",
+                                    "value": "very long string",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "publish",
+                                    "value": "1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "featured_image",
+                                    "type": "file",
+                                    "src": []
+                                },
+                                {
+                                    "key": "categories",
+                                    "value": "",
+                                    "description": "array",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/posts",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "POST",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [{
+                                    "key": "title",
+                                    "value": "post title updated",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "body",
+                                    "value": "very long string updated",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "publish",
+                                    "value": "1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "featured_image",
+                                    "type": "file",
+                                    "src": []
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "put",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "categories",
+                                    "value": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/posts/2",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts",
+                                "2"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "My Posts",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{url}}/api/posts?search&sort_order=desc",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts"
+                            ],
+                            "query": [{
+                                    "key": "search",
+                                    "value": null
+                                },
+                                {
+                                    "key": "sort_order",
+                                    "value": "desc"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "DELETE",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/posts/1",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "posts",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Account",
+            "item": [{
+                    "name": "Me",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "GET",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "url": {
+                            "raw": "{{url}}/api/me",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "me"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Profile",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "PUT",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                "key": "name",
+                                "value": "Updated name",
+                                "type": "text"
+                            }]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/profile",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profile"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update password",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [{
+                                "key": "token",
+                                "value": "{{access_token}}",
+                                "type": "string"
+                            }]
+                        },
+                        "method": "PUT",
+                        "header": [{
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                        }],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [{
+                                    "key": "current_password",
+                                    "value": "password@123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "password",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password_confirmation",
+                                    "value": "password",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/password",
+                            "host": [
+                                "{{url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "password"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Explore Posts",
+            "request": {
+                "method": "GET",
+                "header": [{
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                }],
+                "url": {
+                    "raw": "{{url}}/api/explore?search",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "api",
+                        "explore"
+                    ],
+                    "query": [{
+                        "key": "search",
+                        "value": null
+                    }]
+                }
+            },
+            "response": []
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [{
+            "key": "token",
+            "value": "{{access_token}}",
+            "type": "string"
+        }]
+    },
+    "event": [{
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [{
+            "key": "url",
+            "value": "http://laravel-blogger.test"
+        },
+        {
+            "key": "access_token",
+            "value": ""
+        }
+    ]
 }
